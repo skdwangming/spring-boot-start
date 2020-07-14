@@ -1,6 +1,5 @@
-package com.wm.spring.boot.test;
+package com.wm.spring.boot.test.annotation;
 
-import com.wm.spring.boot.entity.Restaurant;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 

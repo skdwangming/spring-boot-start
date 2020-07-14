@@ -1,4 +1,4 @@
-package com.wm.spring.boot.test;
+package com.wm.spring.boot.test.annotation;
 
 /**
  * @Classname Animal

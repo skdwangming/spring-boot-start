@@ -1,4 +1,4 @@
-package com.wm.spring.boot.test;
+package com.wm.spring.boot.test.annotation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
