@@ -1,18 +1,13 @@
 package com.wm.spring.boot.controller;
 
-import com.wm.spring.boot.dao.EatDateMapper;
-import com.wm.spring.boot.entity.EatDate;
 import com.wm.spring.boot.entity.Restaurant;
 import com.wm.spring.boot.entity.User;
 import com.wm.spring.boot.service.RestaurantService;
 import com.wm.spring.boot.service.UserService;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * @Classname Eat
@@ -36,7 +31,7 @@ public class EatController {
         user.setId(id);
         user.setUsername(userName);
         user.setNote(note);
-        userService.printUser(null);
+        userService.printUser(user);
         return user;
     }
 
@@ -50,7 +45,6 @@ public class EatController {
         Restaurant one = restaurantService.getOne();
         return one;
     }
-
 
 
 }

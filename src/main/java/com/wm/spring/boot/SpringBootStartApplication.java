@@ -1,6 +1,7 @@
 package com.wm.spring.boot;
 
-import com.wm.spring.boot.service.MyAspect;
+import com.wm.spring.boot.aspect.MyAspect;
+import com.wm.spring.boot.aspect.UserAspect;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +17,14 @@ public class SpringBootStartApplication {
 
     }
 
-    // 定义切面
-    @Bean(name = "myAspect")
-    public MyAspect initMyAspect() {
-        return new MyAspect();
-    }
+//     定义切面
+//    @Bean(name = "myAspect")
+//    public MyAspect initMyAspect() {
+//        return new MyAspect();
+//    }
+//    @Bean
+//    public UserAspect init(){
+//        return new UserAspect();
+//    }
 
 }

@@ -1,16 +1,19 @@
-package com.wm.spring.boot.service;
+package com.wm.spring.boot.aspect;
 
 
 import com.wm.spring.boot.entity.User;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
 
 @Aspect
+@Component
 public class MyAspect {
 	
 //	@DeclareParents(value= "com.springboot.chapter4.aspect.service.impl.UserServiceImpl+", defaultImpl=UserValidatorImpl.class)
 //	public UserValidator userValidator;
 	
-	@Pointcut("execution(* com.wm.spring.boot.service.impl.*.printUser(..)) && bean('userServiceImpl')")
+	@Pointcut("execution(* com.wm.spring.boot.service.impl.*.printUser(..)) && bean(userServiceImpl)")
 	public void pointCut() {
 	}
 	
@@ -18,11 +21,7 @@ public class MyAspect {
 	public void beforeParam( User user) {
 		System.out.println("before ......");
 	} 
-	
-//	@Before("pointCut()")
-//	public void before() {
-//		System.out.println("before ......");
-//	}
+
 	
 	@After("pointCut()")
 	public void after() {
@@ -41,10 +40,10 @@ public class MyAspect {
 	}
 	
 
-//	@Around("pointCut()")
-//	public void around(ProceedingJoinPoint jp) throws Throwable {
-//		System.out.println("around before......");
-//		jp.proceed();
-//		System.out.println("around after......");
-//	}
+	@Around("pointCut()")
+	public void around(ProceedingJoinPoint jp) throws Throwable {
+		System.out.println("around before......");
+		jp.proceed();
+		System.out.println("around after......");
+	}
 }
