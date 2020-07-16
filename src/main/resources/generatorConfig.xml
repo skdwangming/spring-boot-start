@@ -4,6 +4,11 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
+
+    <!--生成mapper.xml时覆盖原文件-->
+    <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+
+
     <!--mysql 连接数据库jar 这里选择自己本地位置-->
 <!--        <classPathEntry location="/Users/wm/Downloads/ojdbc6-11.2.0.3.jar" />-->
         <classPathEntry location="/Users/wm/repository/mysql/mysql-connector-java/8.0.18/mysql-connector-java-8.0.18.jar" />
