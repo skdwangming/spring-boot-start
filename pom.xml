@@ -65,7 +65,7 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>1.4.0</version>
                 <configuration>
                     <!--配置文件的位置-->
                     <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
@@ -84,7 +84,7 @@
                     <dependency>
                         <groupId>org.mybatis.generator</groupId>
                         <artifactId>mybatis-generator-core</artifactId>
-                        <version>1.3.2</version>
+                        <version>1.4.0</version>
                     </dependency>
 
                 </dependencies>
