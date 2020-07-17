@@ -4,10 +4,14 @@ import com.wm.spring.boot.entity.Restaurant;
 import com.wm.spring.boot.entity.User;
 import com.wm.spring.boot.service.RestaurantService;
 import com.wm.spring.boot.service.UserService;
+import com.wm.spring.boot.utils.IdRepeat;
 import com.wm.spring.boot.validator.UserValidator;
+import org.apache.commons.collections4.map.LRUMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 
 /**
@@ -38,13 +42,13 @@ public class EatController {
 
     @RequestMapping("/vp")
     @ResponseBody
-    public User validateAndPrint(Long id, String userName, String note){
+    public User validateAndPrint(Long id, String userName, String note) {
         User user = new User();
         user.setId(id);
         user.setUsername(userName);
         user.setNote(note);
         UserValidator userValidator = (UserValidator) this.userService;
-        if(userValidator.validate(user)){
+        if (userValidator.validate(user)) {
             userService.printUser(user);
         }
         return user;
@@ -59,6 +63,13 @@ public class EatController {
     public Restaurant getOne() {
         Restaurant one = restaurantService.getOne();
         return one;
+    }
+
+
+    @RequestMapping("/add")
+    public boolean repeatCommit(String id) {
+        boolean b = IdRepeat.repeatCommit(id, this.getClass());
+        return b;
     }
 
 
