@@ -1,8 +1,6 @@
 package com.wm.spring.boot.Demo;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wm.spring.boot.entity.User;
-import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,48 +10,28 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
 
-public class Demo {
-    @Test
-    public void test1(){
-        User.Builder builder = new User.Builder();
-        User user = builder.setId((long) 1).setNote("wm").setUsername("wm").builder();
-        System.out.println(user.toString());
-
-    }
-    @Test
-    public void test2(){
-        HashMap<String, Object> hm = new HashMap<>();
-        hm.put("userId",1);
-        hm.put("productId",1);
-        hm.put("quantity",1);
-        JSONObject jsonObject = new JSONObject(hm);
-        String url = "http://localhost:8080/buy";
-        for (int i = 0; i < 10; i++) {
-            String s = sendPost(url, jsonObject);
-            System.out.println(s);
+/**
+ * @Classname Multithreadding
+ * @Description TODO
+ * @Date 2020/7/18 23:16
+ * @Author wm
+ */
+public class Multithreading implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 0; i < 1000; i++) {
+            System.out.println(i);
         }
+//        String name = Thread.currentThread().getName();
+//        String url = "http://localhost:8080/buy";
+//        String json = "{\"quantity\":1,\"productId\":1,\"userId\":1}";
+//        for (int i = 0; i < 1000; i++) {
+//            String s = sendPost(url, json);
+//            System.out.println(name + "-" + s);
+//        }
     }
 
-    @Test
-    public void test3(){
-        Multithreading m1 = new Multithreading();
-//        Multithreading m2 = new Multithreading();
-        Thread t1 = new Thread(m1);
-//        Thread t2 = new Thread(m2);
-        t1.start();
-//        t2.start();
-    }
-
-    @Test
-    public void test4(){
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("userId", 1);
-        jsonObject.put("productId", 1);
-        jsonObject.put("quantity", 1);
-        System.out.println(jsonObject);
-    }
-
-    public static String sendPost(String url, JSONObject param) {
+    public static String sendPost(String url, String param) {
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";
@@ -62,7 +40,7 @@ public class Demo {
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
             // 设置通用的请求属性
-            conn.setRequestProperty("Content-Type","application/json");
+            conn.setRequestProperty("Content-Type", "application/json");
             conn.setRequestProperty("accept", "*/*");
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent",
@@ -71,7 +49,11 @@ public class Demo {
             conn.setDoOutput(true);
             conn.setDoInput(true);
             // 获取URLConnection对象对应的输出流
-            out = new PrintWriter(conn.getOutputStream());
+            try {
+                out = new PrintWriter(conn.getOutputStream());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             // 发送请求参数
             out.print(param);
             // flush输出流的缓冲
@@ -102,10 +84,5 @@ public class Demo {
         }
         return result;
     }
-    @Test
-    public void test5(){
-        HttpURLConnectionDemo hu = new HttpURLConnectionDemo();
-        Thread thread = new Thread(hu);
-        thread.start();
-    }
+
 }

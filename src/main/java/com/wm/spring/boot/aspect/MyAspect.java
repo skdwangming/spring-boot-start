@@ -16,7 +16,7 @@ public class MyAspect {
     @DeclareParents(value = "com.wm.spring.boot.service.impl.UserServiceImpl", defaultImpl = UserValidatorImpl.class)
     public UserValidator userValidator;
 
-    @Pointcut("execution(* com.wm.spring.boot.service.impl.*.printUser(..)) && bean(userServiceImpl)")
+    @Pointcut("execution(* com.wm.spring.boot.service.impl.*.printUser(..)) && bean(userServiceImpl) ")
     public void pointCut() {
     }
 
