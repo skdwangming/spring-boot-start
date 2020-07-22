@@ -21,16 +21,16 @@
         <property name="password" value="123456"/>
     </properties>
 
-    <!--驼峰匹配-->
-    <settings>
-        <setting name="cacheEnabled" value="true"/>
-    </settings>
+    <!--二级缓存-->
+    <!--    <settings>-->
+    <!--        <setting name="cacheEnabled" value="true"/>-->
+    <!--    </settings>-->
 
     <!--简化实体类-->
-<!--    <typeAliases>-->
-<!--        <package name="entity"/>-->
-<!--    </typeAliases>-->
-    
+    <!--    <typeAliases>-->
+    <!--        <package name="entity"/>-->
+    <!--    </typeAliases>-->
+
     <!--<plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
             <property name="param1" value="value1"/>
